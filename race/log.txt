@@ -1,0 +1,159 @@
+==9583== Memcheck, a memory error detector
+==9583== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==9583== Using Valgrind-3.9.0 and LibVEX; rerun with -h for copyright info
+==9583== Command: ./main
+==9583== Parent PID: 31168
+==9583== 
+--9583-- 
+--9583-- Valgrind options:
+--9583--    -v
+--9583--    --leak-check=full
+--9583--    --log-file=log.txt
+--9583-- Contents of /proc/version:
+--9583--   Linux version 3.11.0-19-generic (buildd@comet) (gcc version 4.8.1 (Ubuntu/Linaro 4.8.1-10ubuntu8) ) #33-Ubuntu SMP Tue Mar 11 18:48:34 UTC 2014
+--9583-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3
+--9583-- Page sizes: currently 4096, max supported 4096
+--9583-- Valgrind library directory: /usr/local/lib/valgrind
+--9583-- Reading syms from /home/can/Desktop/Projects/race/main
+--9583-- Reading syms from /lib/x86_64-linux-gnu/ld-2.17.so
+--9583--   Considering /lib/x86_64-linux-gnu/ld-2.17.so ..
+--9583--   .. CRC mismatch (computed 51e60a7a wanted 521e3c74)
+--9583--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.17.so ..
+--9583--   .. CRC is valid
+--9583-- Reading syms from /usr/local/lib/valgrind/memcheck-amd64-linux
+--9583--    object doesn't have a dynamic symbol table
+--9583-- Scheduler: using generic scheduler lock implementation.
+--9583-- Reading suppressions file: /usr/local/lib/valgrind/default.supp
+==9583== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9583-by-can-on-???
+==9583== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9583-by-can-on-???
+==9583== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9583-by-can-on-???
+==9583== 
+==9583== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9583== don't want to do, unless you know exactly what you're doing,
+==9583== or are doing some strange experiment):
+==9583==   /usr/local/lib/valgrind/../../bin/vgdb --pid=9583 ...command...
+==9583== 
+==9583== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9583==   /path/to/gdb ./main
+==9583== and then give GDB the following command
+==9583==   target remote | /usr/local/lib/valgrind/../../bin/vgdb --pid=9583
+==9583== --pid is optional if only one valgrind process is running
+==9583== 
+--9583-- REDIR: 0x4018f40 (strlen) redirected to 0x38067461 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--9583-- Reading syms from /usr/local/lib/valgrind/vgpreload_core-amd64-linux.so
+--9583-- Reading syms from /usr/local/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--9583-- REDIR: 0x4018db0 (index) redirected to 0x4c2cf60 (index)
+--9583-- REDIR: 0x4018e30 (strcmp) redirected to 0x4c2e040 (strcmp)
+--9583-- Reading syms from /lib/x86_64-linux-gnu/libncurses.so.5.9
+--9583--   Considering /lib/x86_64-linux-gnu/libncurses.so.5.9 ..
+--9583--   .. CRC mismatch (computed 46fd1928 wanted a3846651)
+--9583--    object doesn't have a symbol table
+--9583-- Reading syms from /lib/x86_64-linux-gnu/libtinfo.so.5.9
+--9583--   Considering /lib/x86_64-linux-gnu/libtinfo.so.5.9 ..
+--9583--   .. CRC mismatch (computed 8b9719d6 wanted 83875f5b)
+--9583--    object doesn't have a symbol table
+--9583-- Reading syms from /lib/x86_64-linux-gnu/libc-2.17.so
+--9583--   Considering /lib/x86_64-linux-gnu/libc-2.17.so ..
+--9583--   .. CRC mismatch (computed 2c8ee98b wanted da4a7364)
+--9583--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.17.so ..
+--9583--   .. CRC is valid
+--9583-- Reading syms from /lib/x86_64-linux-gnu/libdl-2.17.so
+--9583--   Considering /lib/x86_64-linux-gnu/libdl-2.17.so ..
+--9583--   .. CRC mismatch (computed 05f373b6 wanted 04609aff)
+--9583--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libdl-2.17.so ..
+--9583--   .. CRC is valid
+--9583-- REDIR: 0x530d980 (strcasecmp) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x5309d10 (strnlen) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x530fc50 (strncasecmp) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x530c790 (memset) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x530c740 (memcpy@GLIBC_2.2.5) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x530b700 (__GI_strrchr) redirected to 0x4c2cd80 (__GI_strrchr)
+--9583-- REDIR: 0xffffffffff600400 (???) redirected to 0x3806744d (vgPlain_amd64_linux_REDIR_FOR_vtime)
+--9583-- REDIR: 0x5309c30 (__GI_strlen) redirected to 0x4c2d310 (__GI_strlen)
+--9583-- REDIR: 0x5309e30 (__GI_strncmp) redirected to 0x4c2d800 (__GI_strncmp)
+--9583-- REDIR: 0x5309be0 (strlen) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53ea0e0 (__strlen_sse2_pminub) redirected to 0x4c2d2f0 (strlen)
+--9583-- REDIR: 0x5303fb0 (calloc) redirected to 0x4c2c13e (calloc)
+--9583-- REDIR: 0x5313b20 (strchrnul) redirected to 0x4c2fd30 (strchrnul)
+--9583-- REDIR: 0x5309d40 (__GI_strnlen) redirected to 0x4c2d2c0 (__GI_strnlen)
+--9583-- REDIR: 0x5303900 (free) redirected to 0x4c2b4f0 (free)
+--9583-- REDIR: 0x530b6c0 (rindex) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53bb340 (__strrchr_sse42) redirected to 0x4c2cd50 (rindex)
+--9583-- REDIR: 0x5308030 (index) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53b9500 (__strchr_sse42) redirected to 0x4c2ce20 (index)
+--9583-- REDIR: 0x5303470 (malloc) redirected to 0x4c2a3d6 (malloc)
+--9583-- REDIR: 0x5309580 (strcpy) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53182a0 (__strcpy_sse2_unaligned) redirected to 0x4c2d330 (strcpy)
+--9583-- REDIR: 0x53080f0 (strcmp) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53b95b0 (__strcmp_sse42) redirected to 0x4c2dfa0 (strcmp)
+--9583-- REDIR: 0x5312330 (memcpy@@GLIBC_2.14) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53cf4a0 (__memcpy_ssse3_back) redirected to 0x4c2e390 (memcpy@@GLIBC_2.14)
+--9583-- REDIR: 0x53039f0 (realloc) redirected to 0x4c2c2e0 (realloc)
+--9583-- REDIR: 0x530b680 (strncpy) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53188d0 (__strncpy_sse2_unaligned) redirected to 0x4c2d4f0 (strncpy)
+--9583-- REDIR: 0x5321db0 (strstr) redirected to 0x4a25713 (_vgnU_ifunc_wrapper)
+--9583-- REDIR: 0x53bb4e0 (__strstr_sse42) redirected to 0x4c30140 (strstr)
+--9583-- REDIR: 0xffffffffff600000 (???) redirected to 0x38067443 (vgPlain_amd64_linux_REDIR_FOR_vgettimeofday)
+--9583-- REDIR: 0x530c7d0 (__GI_memset) redirected to 0x4c2f730 (memset)
+==9583== Conditional jump or move depends on uninitialised value(s)
+==9583==    at 0x400FA0: main (main.c:95)
+==9583== 
+==9583== Conditional jump or move depends on uninitialised value(s)
+==9583==    at 0x400FA0: main (main.c:95)
+==9583== 
+==9583== Jump to the invalid address stated on the next line
+==9583==    at 0x20000000052A1DE5: ???
+==9583==    by 0xDAFFFFFFFFFF: ???
+==9583==    by 0xFFFDB02A7: ???
+==9583==    by 0x1DAFFFFFF: ???
+==9583==    by 0x400B76: lost (main.c:20)
+==9583==  Address 0x20000000052a1de5 is not stack'd, malloc'd or (recently) free'd
+==9583== 
+==9583== 
+==9583== Process terminating with default action of signal 11 (SIGSEGV)
+==9583==  Bad permissions for mapped region at address 0x20000000052A1DE5
+==9583==    at 0x20000000052A1DE5: ???
+==9583==    by 0xDAFFFFFFFFFF: ???
+==9583==    by 0xFFFDB02A7: ???
+==9583==    by 0x1DAFFFFFF: ???
+==9583==    by 0x400B76: lost (main.c:20)
+==9583== 
+==9583== HEAP SUMMARY:
+==9583==     in use at exit: 66,799 bytes in 105 blocks
+==9583==   total heap usage: 112 allocs, 7 frees, 71,677 bytes allocated
+==9583== 
+==9583== Searching for pointers to 105 not-freed blocks
+==9583== Checked 189,744 bytes
+==9583== 
+==9583== LEAK SUMMARY:
+==9583==    definitely lost: 0 bytes in 0 blocks
+==9583==    indirectly lost: 0 bytes in 0 blocks
+==9583==      possibly lost: 0 bytes in 0 blocks
+==9583==    still reachable: 66,799 bytes in 105 blocks
+==9583==         suppressed: 0 bytes in 0 blocks
+==9583== Reachable blocks (those to which a pointer was found) are not shown.
+==9583== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==9583== 
+==9583== Use --track-origins=yes to see where uninitialised values come from
+==9583== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==9583== 
+==9583== 1 errors in context 1 of 3:
+==9583== Jump to the invalid address stated on the next line
+==9583==    at 0x20000000052A1DE5: ???
+==9583==    by 0xDAFFFFFFFFFF: ???
+==9583==    by 0xFFFDB02A7: ???
+==9583==    by 0x1DAFFFFFF: ???
+==9583==    by 0x400B76: lost (main.c:20)
+==9583==  Address 0x20000000052a1de5 is not stack'd, malloc'd or (recently) free'd
+==9583== 
+==9583== 
+==9583== 1 errors in context 2 of 3:
+==9583== Conditional jump or move depends on uninitialised value(s)
+==9583==    at 0x400FA0: main (main.c:95)
+==9583== 
+==9583== 
+==9583== 1 errors in context 3 of 3:
+==9583== Conditional jump or move depends on uninitialised value(s)
+==9583==    at 0x400FA0: main (main.c:95)
+==9583== 
+==9583== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

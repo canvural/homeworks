@@ -1,0 +1,19 @@
+ GO 2
+ IN
+ IH 1
+ IH 2
+ CH 1
+ IN
+ IH 4
+ AD 0
+ SH
+ ST
+ RV 1
+ SH
+ ST
+ CH 0
+ ST
+ IT 1
+ ST
+ HA
+

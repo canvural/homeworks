@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Element	list.c	/^} Element;$/;"	t	typeref:struct:_el	file:
+List	list.c	/^} List;$/;"	t	typeref:struct:_list	file:
+_el	list.c	/^typedef struct _el{$/;"	s	file:
+_list	list.c	/^typedef struct _list {$/;"	s	file:
+addList	list.c	/^void addList(List *one, List *two)$/;"	f
+clearList	list.c	/^void clearList(List *l)$/;"	f
+data	list.c	/^    int data;$/;"	m	struct:_el	file:
+deleteHead	list.c	/^int deleteHead(List *l, int *value){$/;"	f
+deleteTail	list.c	/^int deleteTail(List *l, int *value)$/;"	f
+findValue	list.c	/^int findValue(List *l, int value)$/;"	f
+head	list.c	/^    Element *head;$/;"	m	struct:_list	file:
+init	list.c	/^void init(List *l)$/;"	f
+insertHead	list.c	/^void insertHead(List *l, int x)$/;"	f
+insertTail	list.c	/^void insertTail(List *l, int x)$/;"	f
+main	list.c	/^int main(int argc, char const *argv[]) {$/;"	f
+next	list.c	/^    struct _el *next;$/;"	m	struct:_el	typeref:struct:_el::_el	file:
+prev	list.c	/^    struct _el *prev;$/;"	m	struct:_el	typeref:struct:_el::_el	file:
+removeAllValue	list.c	/^void removeAllValue(List *l, int value)$/;"	f
+showBool	list.c	/^void showBool(int bool) {$/;"	f
+showListFromHead	list.c	/^void showListFromHead(List *l)$/;"	f
+showListFromTail	list.c	/^void showListFromTail(List *l)$/;"	f
+tail	list.c	/^    Element *tail;$/;"	m	struct:_list	file:

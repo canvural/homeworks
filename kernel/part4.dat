@@ -1,0 +1,267 @@
+Linux vagrant-ubuntu-trusty-64 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+  174  clear
+  175  make -f Makefile-kernel 
+  176  sudo vi ~/.bashrc
+  177  exit
+  178  free -m
+  179  exit
+  180  free -m
+  181  make cd ..
+  182  cd ..
+  183  cd /vagrant
+  184  cd kernel/linux-4.0.1/
+  185  make -j 4 KDEB_PKGVERSION=1.hw deb-pkg
+  186  exit
+  187  free -m
+  188  top
+  189  exit
+  190  cd /kernel
+  191  cd /vagrant
+  192  ls
+  193  history | tail -n 20 >> part4.txt
+  1  history
+    2  history -w
+    3  clear
+    4  sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev   libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev   libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev
+    5  clear
+    6  sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev   libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev   libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev
+    7  clear
+    8  sudo apt-get update
+    9  sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev   libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev   libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev
+   10  mkdir ~/ffmpeg_sources
+   11  sudo apt-get install yasm
+   12  sudo apt-get install libx264-dev
+   13  sudo apt-get install cmake mercurial
+   14  cd ~/ffmpeg_sources
+   15  hg clone https://bitbucket.org/multicoreware/x265
+   16  cd ~/ffmpeg_sources/x265/build/linux
+   17  PATH="$HOME/bin:$PATH" cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED:bool=off ../../source
+   18  make
+   19  make install
+   20  make distclean
+   21  sudo apt-get install unzip
+   22  cd ~/ffmpeg_sources
+   23  wget -O fdk-aac.zip https://github.com/mstorsjo/fdk-aac/zipball/master
+   24  unzip fdk-aac.zip
+   25  cd mstorsjo-fdk-aac*
+   26  autoreconf -fiv
+   27  ./configure --prefix="$HOME/ffmpeg_build" --disable-shared
+   28  make
+   29  make install
+   30  make distclean
+   31  sudo apt-get install libmp3lame-dev
+   32  sudo apt-get install libopus-dev
+   33  cd ~/ffmpeg_sources
+   34  wget http://webm.googlecode.com/files/libvpx-v1.3.0.tar.bz2
+   35  tar xjvf libvpx-v1.3.0.tar.bz2
+   36  cd libvpx-v1.3.0
+   37  PATH="$HOME/bin:$PATH" ./configure --prefix="$HOME/ffmpeg_build" --disable-examples --disable-unit-tests
+   38  PATH="$HOME/bin:$PATH" make
+   39  make install
+   40  make clean
+   41  cd ~/ffmpeg_sources
+   42  wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2
+   43  tar xjvf ffmpeg-snapshot.tar.bz2
+   44  cd ffmpeg
+   45  PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure   --prefix="$HOME/ffmpeg_build"   --pkg-config-flags="--static"   --extra-cflags="-I$HOME/ffmpeg_build/include"   --extra-ldflags="-L$HOME/ffmpeg_build/lib"   --bindir="$HOME/bin"   --enable-gpl   --enable-libass   --enable-libfdk-aac   --enable-libfreetype   --enable-libmp3lame   --enable-libopus   --enable-libtheora   --enable-libvorbis   --enable-libvpx   --enable-libx264   --enable-libx265   --enable-nonfree
+   46  PATH="$HOME/bin:$PATH" make
+   47  make install
+   48  make distclean
+   49  hash -r
+   50  . ~/.profile
+   51  cd
+   52  ls
+   53  cd ..
+   54  cd vagrant/
+   55  ls
+   56  gcc -o test-ffmpeg test-ffmpeg.c -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   57  ffmpeg -v
+   58  clear
+   59  gcc -o test-ffmpeg test-ffmpeg.c -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   60  gcc -o test-ffmpeg test-ffmpeg.c ~/ffmpeg_build/include/ -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   61  gcc -o test-ffmpeg test-ffmpeg.c -I/home/ffmpeg_build/include/ -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   62  gcc -o test-ffmpeg test-ffmpeg.c -I /home/ffmpeg_build/include/ -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   63  cd /home
+   64  ls
+   65  cd ..
+   66  cd vagrant/
+   67  ls
+   68  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   69  clear
+   70  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   71  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavutil -lavformat -lavcodec -lswscale -lpthreads -lz -lm `sdl-config --cflags --libs`
+   72  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavutil -lavformat -lavcodec -lswscale -pthread -lz -lm `sdl-config --cflags --libs`
+   73  clear
+   74  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread -lavutil -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   75  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread -lavutil -lavformat -lavcodec -lswscale -lz -lbz2 -lm `sdl-config --cflags --libs`
+   76  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread -lavutil -lavformat -lavfilter -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+   77  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec -lavutil -lswscale -lz -lm `sdl-config --cflags --libs`
+   78  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec -lavutil -lswscale -lvorbisenc -lz -lm `sdl-config --cflags --libs`
+   79  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec -lvorbisenc -lavutil -lswscale -lz -lm `sdl-config --cflags --libs`
+   80  pkg-config --cflags --libs vorbisenc
+   81  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec -lvorbisenc -lvorbis -lavutil -lswscale -lz -lm `sdl-config --cflags --libs`
+   82  clear
+   83  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec  -lavutil -lswscale -lvorbisenc -lvorbis -lz -lm `sdl-config --cflags --libs`
+   84  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec  -lavutil -lswscale -lvorbisenc -lvorbis -lva -lz -lm `sdl-config --cflags --libs`
+   85  clear
+   86  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec  -lavutil -lswscale -lvorbisenc -lvorbis -lva -lz -lm `sdl-config --cflags --libs`
+   87  clear
+   88  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec  -lavutil -lswscale -lswresample -lvorbisenc -lvorbis -lva -lz -lm `sdl-config --cflags --libs`
+   89  sudo apt-get install libvpx-dev
+   90  clear
+   91  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec  -lavutil -lswscale -lswresample -lvorbisenc -lvorbis -lva -lz -lm `sdl-config --cflags --libs`
+   92  sudo apt-get install libx264-dev
+   93  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread  -lavformat -lavfilter -lavcodec  -lavutil -lswscale -lswresample -lvorbisenc -lvorbis -lva -lvpx -lz -lm `sdl-config --cflags --libs`
+   94  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread -lva -lvpx  -lavformat -lavfilter -lavcodec -lavutil -lswscale -lswresample -lvorbisenc -lvorbis -lz -lm `sdl-config --cflags --libs`
+   95  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread -lva -lvda -lvpx  -lavformat -lavfilter -lavcodec -lavutil -lswscale -lswresample -lvorbisenc -lvorbis -lz -lm `sdl-config --cflags --libs`
+   96  sudo apt-get install libvda-dev
+   97  sudo apt-get install libvda
+   98  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -pthread -lva -lvpx  -lavformat -lavfilter -lavcodec -lavutil -lswscale -lswresample -lvorbisenc -lvorbis -lz -lm `sdl-config --cflags --libs`
+   99  clear
+  100  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lvpx -lx264 -lyasm -lavutil -lm -lz -pthread -ldl `sdl-config --cflags --libs`
+  101  sudo apt-get install libyasm-dev
+  102  sudo apt-get install libyasm
+  103  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lvpx -lx264 -lavutil -lm -lz -pthread -ldl `sdl-config --cflags --libs`
+  104  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264 -lx265 -lavutil -lm -lz -pthread -ldl `sdl-config --cflags --libs`
+  105  clear
+  106  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264 -lx265 -lavutil -lm -lz -pthread `sdl-config --cflags --libs`
+  107  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264  -lavutil -lm -lz -pthread `sdl-config --cflags --libs`
+  108  clear
+  109  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264  -lavutil -lm -lz -ldl -pthread `sdl-config --cflags --libs`
+  110  x265 -h
+  111  cd ~/ffmpeg_sources/x265/build/linux
+  112  ls
+  113  x265 -h
+  114  ./x265 -h
+  115  clear
+  116  lsd
+  117  ls
+  118  sudo make install
+  119  clear
+  120  cd /vagrant
+  121  ls
+  122  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264 -lx265  -lavutil -lm -lz -ldl -pthread `sdl-config --cflags --libs`
+  123  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264 -lx265  -lavutil -lm -lz -ldl -lstdc++ -pthread `sdl-config --cflags --libs`
+  124  sudo apt-get install --reinstall libtheora0
+  125  gcc -o test-ffmpeg test-ffmpeg.c -I /home/vagrant/ffmpeg_build/include/ -L/home/vagrant/ffmpeg_build/lib/ -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264 -lx265  -lavutil -ltheoraenc -ltheoradec -lm -lz -ldl -lstdc++ -pthread `sdl-config --cflags --libs`
+  126  ./test-ffmpeg 
+  127  ls
+  128  ./test-ffmpeg a.mp4
+  129  clear
+  130  make Makefile-ffmpeg
+  131  make Makefile-ffmpeg clean
+  132  Makefile-ffmpeg clean
+  133  make -f Makefile-ffmpeg
+  134  make clean -f Makefile-ffmpeg
+  135  ./test-ffmpeg a.mp4
+  136  make -f Makefile-ffmpeg
+  137  clear
+  138  make -f Makefile-kernel 
+  139  sudo insmod kernel-module.ko
+  140  clear
+  141  make -f Makefile-kernel 
+  142  sudo insmod kernel-module.ko
+  143  pwd
+  144  ls
+  145  make -f Makefile-kernel 
+  146  sudo insmod kernel-module.ko
+  147  make clean -f Makefile-kernel 
+  148  clear
+  149  make -f Makefile-kernel 
+  150  clear
+  151  make -f Makefile-kernel 
+  152  sudo apt-get install linux-headers-$(uname -r)
+  153  make -f Makefile-kernel 
+  154  sudo insmod kernel-module.ko
+  155  make menuconfig
+  156  clear
+  157  sudo vi ~/.bashrc
+  158  make -f Makefile-kernel 
+  159  sudo vi ~/.bashrc
+  160  export GREP_OPTIONS=--color=always
+  161  make -f Makefile-kernel 
+  162  make clean -f Makefile-kernel 
+  163  make -f Makefile-kernel 
+  164  sudo vi ~/.bashrc
+  165  clear
+  166  make -f Makefile-kernel 
+  167  make clean -f Makefile-kernel 
+  168  make -f Makefile-kernel 
+  169  make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+  170  clear
+  171  make -f Makefile-kernel 
+  172  uname -r
+  173  make -f Makefile-kernel 
+  174  clear
+  175  make -f Makefile-kernel 
+  176  sudo vi ~/.bashrc
+  177  exit
+  178  free -m
+  179  exit
+  180  free -m
+  181  make cd ..
+  182  cd ..
+  183  cd /vagrant
+  184  cd kernel/linux-4.0.1/
+  185  make -j 4 KDEB_PKGVERSION=1.hw deb-pkg
+  186  exit
+  187  free -m
+  188  top
+  189  exit
+  190  free -m
+  191  cd /vagrant/kernel/linux-4.0.1/
+  192  make -j4 KDEB_PKGVERSION=1.hw deb-pkg
+  193  cd ..
+  194  cp -r kernel /kernel/
+  195  sudo cp -r kernel /kernel/
+  196  sudo cp -r kernel/ /kernel/
+  197  cd /kernel
+  198  ls
+  199  cd kernel/
+  200  ls
+  201  cd ..
+  202  cd linux-4.0.1/
+  203  ls
+  204  make -j4 KDEB_PKGVERSION=1.hw deb-pkg
+  205  cd ..
+  206  cd kernel/linux-4.0.1/
+  207  make -j4 KDEB_PKGVERSION=1.hw deb-pkg
+  208  sudo make -j4 KDEB_PKGVERSION=1.hw deb-pkg
+  209  ls
+  210  cd ..
+  211  ls
+  212  cd ..
+  213  ls
+  214  cd linux-4.0.1/
+  215  ls
+  216  cd ..
+  217  cd kernel/linux-4.0.1/
+  218  ls
+  219  sudo make -j4 KDEB_PKGVERSION=1.hw deb-pkg
+  220  sudo chmod -R 777 .
+  221  sudo make -j4 KDEB_PKGVERSION=1.hw deb-pkg
+  222  sudo dpkg -i ../linux*.deb
+  223  exit
+  224  cd /kernel
+  225  cd /vagrant
+  226  ls
+  227  history | tail -n 20 >> part4.txt
+  228  exit
+  229  sudo /etc/init.d/vboxadd setup
+  230  /etc/init.d/vboxadd setup
+  231  sudo apt-get update
+  232  sudo apt-get upgrade
+  233  sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
+  234  exit
+  235  vi /var/log/vboxadd-install.log
+  236  cd /vagrant
+  237  ls
+  238  mount -t vboxsf -o uid=`id -u vagrant`,gid=`getent group vagrant | cut -d: -f3` vagrant /vagrant
+  239  sudo mount -t vboxsf -o uid=`id -u vagrant`,gid=`getent group vagrant | cut -d: -f3` vagrant /vagrant
+  240  cd /opt/VBoxGuestAdditions-*/init
+  241  sudo ./vboxadd setup
+  242  vi /var/log/vboxadd-install.log
+  243  clear
+  244  cd
+  245  history
+  Linux vagrant-ubuntu-trusty-64 4.0.1 #2 SMP Thu Apr 30 08:44:28 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux

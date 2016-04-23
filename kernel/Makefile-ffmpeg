@@ -1,0 +1,9 @@
+# This is for my system only. You have to change the include and library path for your system.
+INCLUDES = /home/can/ffmpeg_build/include/
+LIBRARY = /home/can/ffmpeg_build/lib/
+LIBS = -lavformat -lavcodec -lavdevice -lavfilter -lfdk-aac -lmp3lame -lopus -lpostproc -lswresample -lswscale -lvorbis -lvorbisenc -lvorbisfile -logg -lva -lvpx -lx264 -lx265  -lavutil -ltheoraenc -ltheoradec -lm -lz -ldl -lstdc++ -pthread
+
+all:
+	gcc -o test-ffmpeg test-ffmpeg.c -I $(INCLUDES) -L$(LIBRARY) $(LIBS) `sdl-config --cflags --libs`
+clean:
+	$(RM) test-ffmpeg

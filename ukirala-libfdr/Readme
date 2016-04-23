@@ -1,0 +1,5 @@
+Program 'make' komutu ile derlenebilir.
+
+Linux sistemlerde test edilmiştir. Windows'ta denenmemiştir, hatalar olabilir.
+
+./main -i giris.dat -o cikis.dat  komutu ile çalıştırılabilir.

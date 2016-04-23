@@ -1,0 +1,19 @@
+Linux ubuntu 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+  184  cd /kernel/linux-4.0.1/
+  185  make -j 4 KDEB_PKGVERSION=1.homework deb-pkg
+  186  exit
+  187  free -m
+  188  top
+  189  exit
+  190  cd /kernel
+  191  ls
+  192  ls
+  193  history | tail -n 10 >> part4.txt
+  1  history
+    2  cd /kernel/linux-4.0.1/
+    4  sudo dpkg -i ../linux*.deb
+    5  cd /kernel
+    6  ls
+    7  ls
+    8  history | tail -n 20 >> part4.txt
+ Linux ubuntu 4.0.1 #2 SMP Thu Apr 30 15:37:22 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux

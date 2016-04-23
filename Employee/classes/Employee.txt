@@ -1,0 +1,14 @@
+Fatma Aydin Ankara Production 900 20/07/2000
+Mehmet Kopru Istanbul Purchasing 800 21/05/2005
+Ahmet Yalin Bursa Purchasing 780 30/05/2001
+Ayse Yalin Istanbul Accounting 450 05/08/2007
+Fatih Kaymaz Istanbul Production 340 05/09/2005
+Cem Can Urfa Purchasing 770 02/10/2004
+Elif Safak Aydin Production 400 15/03/2003
+Remziye Aydin Ankara Accounting 300 15/03/2003
+Basri Kopru Izmir Quality 200 22/04/2007
+Ahmet Akkaya Istanbul Quality 100 02/03/2006
+Can Yalin Konya Quality 880 01/01/2003
+Can Kaymaz Ankara Production 760 05/09/2010
+Cem Can Ankara Quality 340 17/11/2013
+Elif Kaymaz Antalya Accounting 230 23/12/2012

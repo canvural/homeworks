@@ -1,0 +1,26 @@
+GO 2
+IN
+IH 1
+IH 2
+IT 3
+SH
+FP 2
+AT 0
+DH
+DT
+FP 2
+AT 2
+SH
+IH 66
+DV 88
+IH 78
+DV 1
+CL
+CH 1
+IN
+IH 1
+IT 4
+IH 6
+DV 4
+SH
+HA

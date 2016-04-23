@@ -1,0 +1,4 @@
+InsertRoot A
+InsertLeaf 0 B
+InsertLeaf 1 C
+InsertLeaf 0 D

@@ -1,0 +1,20 @@
+[   13.654666] vboxvideo: Unknown symbol drm_pci_init (err 0)
+[   13.654671] vboxvideo: Unknown symbol drm_ioctl (err 0)
+[   13.654674] vboxvideo: Unknown symbol drm_mmap (err 0)
+[   13.654677] vboxvideo: Unknown symbol drm_pci_exit (err 0)
+[   13.654681] vboxvideo: Unknown symbol drm_release (err 0)
+[   14.533670] vboxsf: Successfully loaded version 4.3.10_Ubuntu (interface 0x00010004)
+[   20.787650] init: pollinate main process (802) terminated with status 1
+[ 3557.423953] Loading Module
+[ 3557.423960] ISIM SOYISIM - OGRENCI ID
+[ 3599.027088] Removing Module
+  227  make -f Makefile-kernel
+  228  dmesg | tail
+  229  dmesg
+  230  clear
+  231  make -f Makefile-kernel
+  232  sudo insmod kernel-module.ko
+  233  dmesg
+  234  sudo rmmod kernel-module.ko
+  235  dmesg | tail >> part3.txt
+  236  history | tail >> part3.txt

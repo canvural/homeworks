@@ -1,0 +1,5 @@
+Başla
+Dosyadan karakterleri diziye oku
+for(0 dan okunan uzunluğa kadar)
+    if(i == 8)
+        Yeni boşluk yaz
