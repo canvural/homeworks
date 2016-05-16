@@ -19,7 +19,7 @@ struct DSF{
 };
 
 void init(DSF & dsf, int size){
-    dsf.arr = (Element *) malloc(sizeof(Element) * size);
+    dsf.arr = new Element[size];
     dsf.size = size;
 }
 
@@ -36,19 +36,22 @@ void makeOneElementSets(DSF & dsf){
 }
 
 int find(DSF & dsf, int index){
-    while(dsf.arr[index].parent != index) {
-        index = dsf.arr[index].parent;
+    if(dsf.arr[index].parent != index) {
+        dsf.arr[index].parent = find(dsf, dsf.arr[index].parent);
     }
 
-    return index;
+    return dsf.arr[index].parent;
 }
 
 void link(DSF & dsf, int index1, int index2){
+    if(index1 == index2) {
+        return;
+    }
+
     if(dsf.arr[index1].rank > dsf.arr[index2].rank) {
         dsf.arr[index2].parent = index1;
     } else {
         dsf.arr[index1].parent = index2;
-
         if(dsf.arr[index1].rank == dsf.arr[index2].rank) {
             dsf.arr[index2].rank++;
         }
